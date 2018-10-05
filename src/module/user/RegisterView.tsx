@@ -2,6 +2,7 @@ import * as React from "react";
 import PureComponent = React.PureComponent;
 import { Mutation } from "react-apollo";
 import { gql } from "apollo-boost";
+import { RegisterMutationVariables, RegisterMutation } from '../../schemaTypes';
 
 // TODO implement types with apollo-cli
 
@@ -27,7 +28,8 @@ export class RegisterView extends PureComponent {
   render() {
     const { password, email } = this.state;
     return (
-      <Mutation mutation={registerMutation}>
+      <Mutation<RegisterMutation, RegisterMutationVariables>
+   mutation={registerMutation}>
         {mutate => (
           <div
             style={{
