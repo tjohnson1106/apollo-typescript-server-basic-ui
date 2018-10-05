@@ -2,7 +2,8 @@ import * as React from "react";
 import PureComponent = React.PureComponent;
 import { Mutation } from "react-apollo";
 import { gql } from "apollo-boost";
-import { RegisterMutationVariables, RegisterMutation } from '../../schemaTypes';
+import { RegisterMutationVariables, RegisterMutation } from "../../schemaTypes";
+import { RouteComponentProps } from "react-router-dom";
 
 // TODO implement types with apollo-cli
 
@@ -12,7 +13,7 @@ const registerMutation = gql`
   }
 `;
 
-export class RegisterView extends PureComponent {
+export class RegisterView extends PureComponent<RouteComponentProps<{}>> {
   state = {
     email: "",
     password: ""
@@ -29,7 +30,8 @@ export class RegisterView extends PureComponent {
     const { password, email } = this.state;
     return (
       <Mutation<RegisterMutation, RegisterMutationVariables>
-   mutation={registerMutation}>
+        mutation={registerMutation}
+      >
         {mutate => (
           <div
             style={{
@@ -58,7 +60,15 @@ export class RegisterView extends PureComponent {
               />
             </div>
             <div>
-              <button onClick={() => console.log("button pressed")}>
+              <button
+                onClick={async () => {
+                  const response = await mutate({
+                    variables: this.state
+                  });
+                  console.log(response);
+                  this.props.history.push("/login");
+                }}
+              >
                 register
               </button>
             </div>
