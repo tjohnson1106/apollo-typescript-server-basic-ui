@@ -6,10 +6,11 @@ export class SubscribeUser extends PureComponent {
   render() {
     return (
       <StripeCheckout
+        name="Bracket Factory LLC"
         token={token => {
           console.log(token);
         }}
-        stripeKey="my_PUBLISHABLE_stripekey"
+        stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE!}
       />
     );
   }
