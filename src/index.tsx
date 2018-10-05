@@ -4,12 +4,11 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 
 import { Routes } from "./Routes";
-import "./index.css";
 import registerServiceWorker from "./registerServiceWorker";
 
-// Pass your GraphQL endpoint to uri
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql"
+  uri: "http://localhost:4000/graphql",
+  credentials: "include"
 });
 
 ReactDOM.render(
