@@ -4,7 +4,8 @@ import { Query } from "react-apollo";
 import { gql } from "apollo-boost";
 
 import { MeQuery } from "../../schemaTypes";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import { SubscribeUser } from "./SubscribeUser";
 
 const meQuery = gql`
   query MeQuery {
@@ -31,10 +32,15 @@ export class Account extends PureComponent {
           }
 
           if (!data.me) {
-            return <Link to="/login">Please login</Link>;
+            return <Redirect to="/login" />;
           }
 
-          return <div>{data.me.email}</div>;
+          if (data.me.type === "free-trial") {
+            return <SubscribeUser />;
+          }
+
+          //   if (data.me.type == "paid")
+          return <Redirect to="/paid-users" />;
         }}
       </Query>
     );

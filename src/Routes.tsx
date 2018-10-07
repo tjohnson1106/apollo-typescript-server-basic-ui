@@ -4,8 +4,8 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import { LoginView } from "./modules/user/LoginView";
 import { RegisterView } from "./modules/user/RegisterView";
-import { MeView } from "./modules/user/MeView";
 import { Account } from "./modules/account/Account";
+import { PaidUsers } from "./modules/account/PaidUsers";
 
 export class Routes extends PureComponent {
   render() {
@@ -14,8 +14,8 @@ export class Routes extends PureComponent {
         <Switch>
           <Route path="/login" component={LoginView} />
           <Route path="/register" component={RegisterView} />
-          <Route path="/me" component={MeView} />
           <Route path="/account" component={Account} />
+          <Route path="/paid-users" component={PaidUsers} />
         </Switch>
       </BrowserRouter>
     );
