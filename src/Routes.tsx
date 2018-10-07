@@ -5,7 +5,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { LoginView } from "./modules/user/LoginView";
 import { RegisterView } from "./modules/user/RegisterView";
 import { MeView } from "./modules/user/MeView";
-import { SubscribeUser } from "./modules/account/SubscribeUser";
+import { Account } from "./modules/account/Account";
 
 export class Routes extends PureComponent {
   render() {
@@ -15,7 +15,7 @@ export class Routes extends PureComponent {
           <Route path="/login" component={LoginView} />
           <Route path="/register" component={RegisterView} />
           <Route path="/me" component={MeView} />
-          <Route path="/subscription" component={SubscribeUser} />
+          <Route path="/account" component={Account} />
         </Switch>
       </BrowserRouter>
     );
