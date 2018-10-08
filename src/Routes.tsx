@@ -15,18 +15,27 @@ export class Routes extends PureComponent {
   render() {
     return (
       <BrowserRouter>
-        <>
-          <Header />
-          <div>
-            <Switch>
-              <Route path="/login" component={LoginView} />
-              <Route path="/register" component={RegisterView} />
-              <Route path="/account" component={Account} />
-              <Route path="/paid-users" component={PaidUsers} />
-              <Route path="/" render={() => <div>Home Page</div>} />
-            </Switch>
-          </div>
-        </>
+        <Switch>
+          <Route path="/login" component={LoginView} />
+          <Route
+            path="/"
+            render={() => (
+              <>
+                <Header />
+                <div>
+                  <Route path="/register" component={RegisterView} />
+                  <Route path="/account" component={Account} />
+                  <Route path="/paid-users" component={PaidUsers} />
+                  <Route
+                    exact={true}
+                    path="/"
+                    render={() => <div>Home Page</div>}
+                  />
+                </div>
+              </>
+            )}
+          />
+        </Switch>
       </BrowserRouter>
     );
   }
