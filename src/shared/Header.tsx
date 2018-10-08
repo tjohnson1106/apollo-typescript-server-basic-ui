@@ -1,6 +1,9 @@
 import * as React from "react";
 import PureComponent = React.PureComponent;
 import { Link } from "react-router-dom";
+import { Query } from "react-apollo";
+import { MeQuery } from "../schemaTypes";
+import { meQuery } from "../graphql/queries/me";
 
 export class Header extends PureComponent {
   state = {};
@@ -26,14 +29,34 @@ export class Header extends PureComponent {
             Stripe Payments
           </h2>
         </Link>
-        <div>
-          <div>
-            <Link to="/login">Login</Link>
-          </div>
-          <div>
-            <Link to="/register">Register</Link>
-          </div>
-        </div>
+        <Query<MeQuery> fetchPolicy="network-only" query={meQuery}>
+          {({ data, loading }) => {
+            if (loading || !data) {
+              return null;
+            }
+
+            if (!data.me) {
+              return (
+                <div>
+                  <div>
+                    <Link to="/login">Login</Link>
+                  </div>
+                  <div>
+                    <Link to="/register">Register</Link>
+                  </div>
+                </div>
+              );
+            }
+
+            // user is logged in
+
+            return (
+              <div>
+                <Link to="/account">Account</Link>
+              </div>
+            );
+          }}
+        </Query>
       </div>
     );
   }

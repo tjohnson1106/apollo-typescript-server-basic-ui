@@ -1,21 +1,11 @@
 import * as React from "react";
 import PureComponent = React.PureComponent;
 import { Query } from "react-apollo";
-import { gql } from "apollo-boost";
 
 import { MeQuery } from "../../schemaTypes";
 import { Redirect } from "react-router-dom";
 import { SubscribeUser } from "./SubscribeUser";
-
-const meQuery = gql`
-  query MeQuery {
-    me {
-      id
-      email
-      type
-    }
-  }
-`;
+import { meQuery } from "../../graphql/queries/me";
 
 export class Account extends PureComponent {
   state = {};
