@@ -7,6 +7,7 @@ import { Redirect } from "react-router-dom";
 import { SubscribeUser } from "./SubscribeUser";
 import { meQuery } from "../../graphql/queries/me";
 import { ChangeCreditCard } from "./ChangeCreditCard";
+import { CancelSubscription } from "./CancelSubscription";
 
 export class Account extends PureComponent {
   state = {};
@@ -35,6 +36,7 @@ export class Account extends PureComponent {
             <div>
               <div>Your current last 4 digits: {data.me.ccLast4}</div>
               <ChangeCreditCard />
+              <CancelSubscription />
             </div>
           );
         }}

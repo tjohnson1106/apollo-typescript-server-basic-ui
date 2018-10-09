@@ -33,8 +33,21 @@ export class ChangeCreditCard extends PureComponent {
               });
               console.log(response);
             }}
+            panelLabel="Change Card"
             stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE!}
-          />
+          >
+            <button
+              style={{
+                borderRadius: 20,
+                borderColor: "black",
+                backgroundColor: "#4b77be",
+                paddingTop: 3,
+                textAlign: "justify"
+              }}
+            >
+              Change Credit Card
+            </button>
+          </StripeCheckout>
         )}
       </Mutation>
     );
