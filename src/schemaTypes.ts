@@ -19,12 +19,34 @@ export interface MeQuery {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: ChangeCreditCardMutation
+// ====================================================
+
+export interface ChangeCreditCardMutation_changeCreditCard {
+  id: string;
+  email: string;
+  type: string;
+}
+
+export interface ChangeCreditCardMutation {
+  changeCreditCard: ChangeCreditCardMutation_changeCreditCard | null;
+}
+
+export interface ChangeCreditCardMutationVariables {
+  source: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: CreateSubscriptionMutation
 // ====================================================
 
 export interface CreateSubscriptionMutation_createSubscription {
   id: string;
   email: string;
+  type: string;
 }
 
 export interface CreateSubscriptionMutation {
@@ -45,6 +67,7 @@ export interface CreateSubscriptionMutationVariables {
 export interface LoginMutation_login {
   id: string;
   email: string;
+  type: string;
 }
 
 export interface LoginMutation {

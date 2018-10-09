@@ -6,12 +6,13 @@ import { MeQuery } from "../../schemaTypes";
 import { Redirect } from "react-router-dom";
 import { SubscribeUser } from "./SubscribeUser";
 import { meQuery } from "../../graphql/queries/me";
+import { ChangeCreditCard } from "./ChangeCreditCard";
 
 export class Account extends PureComponent {
   state = {};
   render() {
     return (
-      <Query<MeQuery> fetchPolicy="network-only" query={meQuery}>
+      <Query<MeQuery> query={meQuery}>
         {({ data, loading }) => {
           if (loading) {
             return null;
@@ -30,7 +31,7 @@ export class Account extends PureComponent {
           }
 
           //   if (data.me.type == "paid")
-          return <Redirect to="/paid-users" />;
+          return <ChangeCreditCard />;
         }}
       </Query>
     );

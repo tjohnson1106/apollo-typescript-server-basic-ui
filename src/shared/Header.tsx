@@ -29,7 +29,7 @@ export class Header extends PureComponent {
             Stripe Payments
           </h2>
         </Link>
-        <Query<MeQuery> fetchPolicy="network-only" query={meQuery}>
+        <Query<MeQuery> query={meQuery}>
           {({ data, loading }) => {
             if (loading || !data) {
               return null;
