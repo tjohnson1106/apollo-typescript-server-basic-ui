@@ -7,15 +7,15 @@ import {
   ChangeCreditCardMutation,
   ChangeCreditCardMutationVariables
 } from "../../schemaTypes";
+import { userFragment } from "../../graphql/fragments/userFragment";
 
 const changeCreditCardMutation = gql`
-  mutation ChangeCreditCardMutation($source: String!) {
-    changeCreditCard(source: $source) {
-      id
-      email
-      type
+  mutation ChangeCreditCardMutation($source: String!, $ccLast4: String!) {
+    changeCreditCard(source: $source, ccLast4: $ccLast4) {
+      ...UserInfo
     }
   }
+  ${userFragment}
 `;
 
 export class ChangeCreditCard extends PureComponent {

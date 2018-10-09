@@ -7,15 +7,16 @@ import {
   CreateSubscriptionMutationVariables,
   CreateSubscriptionMutation
 } from "../../schemaTypes";
+import { userFragment } from "../../graphql/fragments/userFragment";
 
 const createSubscriptionMutation = gql`
-  mutation CreateSubscriptionMutation($source: String!) {
-    createSubscription(source: $source) {
-      id
-      email
-      type
+  mutation CreateSubscriptionMutation($source: String!, $ccLast4: String!) {
+    createSubscription(source: $source, ccLast4: $ccLast4) {
+      ...UserInfo
     }
   }
+
+  ${userFragment}
 `;
 
 export class SubscribeUser extends PureComponent {
