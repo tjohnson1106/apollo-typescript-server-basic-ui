@@ -30,7 +30,7 @@ export class SubscribeUser extends PureComponent {
             name="Bracket Factory LLC"
             token={async token => {
               const response = await mutate({
-                variables: { source: token.id }
+                variables: { source: token.id, ccLast4: token.card.last4 }
               });
               console.log(response);
             }}

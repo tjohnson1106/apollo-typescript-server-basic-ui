@@ -31,7 +31,12 @@ export class Account extends PureComponent {
           }
 
           //   if (data.me.type == "paid")
-          return <ChangeCreditCard />;
+          return (
+            <div>
+              <div>Your current last 4 digits: {data.me.ccLast4}</div>
+              <ChangeCreditCard />
+            </div>
+          );
         }}
       </Query>
     );
