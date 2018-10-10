@@ -11,12 +11,12 @@ interface Props
 }
 
 const Label = styled("div")`
-  font-size: 11px;
+  font-size: 13px;
   line-height: 16px;
   font-family: Helvetica, sans-serif, Arial;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #000412;
+  color: #000133;
   font-weight: 450;
 `;
 

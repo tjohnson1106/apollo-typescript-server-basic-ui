@@ -6,8 +6,7 @@ import { LoginMutation, LoginMutationVariables } from "../../schemaTypes";
 import { RouteComponentProps } from "react-router-dom";
 import { meQuery } from "../../graphql/queries/me";
 import { userFragment } from "../../graphql/fragments/userFragment";
-import { BlueButton } from "../../ui/BlueButton";
-import { Input } from "../../ui/Input";
+import { Form } from "./Form";
 
 const loginMutation = gql`
   mutation LoginMutation($email: String!, $password: String!) {
@@ -19,21 +18,8 @@ const loginMutation = gql`
   ${userFragment}
 `;
 
-export class LoginView extends PureComponent<RouteComponentProps<{}>> {
-  state = {
-    email: "",
-    password: ""
-  };
-
-  handleChange = (e: any) => {
-    const { name, value } = e.target;
-    this.setState({
-      [name]: value
-    });
-  };
-
+export class LoginView extends React.PureComponent<RouteComponentProps<{}>> {
   render() {
-    const { password, email } = this.state;
     return (
       <Mutation<LoginMutation, LoginMutationVariables>
         update={(cache, { data }) => {
@@ -49,50 +35,18 @@ export class LoginView extends PureComponent<RouteComponentProps<{}>> {
         mutation={loginMutation}
       >
         {(mutate, { client }) => (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center"
+          <Form
+            buttonText="login"
+            onSubmit={async data => {
+              // optional reset cache
+              await client.resetStore();
+              const response = await mutate({
+                variables: data
+              });
+              console.log(response);
+              this.props.history.push("/account");
             }}
-          >
-            <div>
-              <Input
-                label="EMAIL"
-                type="text"
-                name="email"
-                placeholder="Enter your email address"
-                value={email}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div>
-              <Input
-                label="PASSWORD"
-                type="password"
-                name="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div>
-              <BlueButton
-                onClick={async () => {
-                  // optional reset store
-                  client.resetStore();
-                  const response = await mutate({
-                    variables: this.state
-                  });
-                  console.log(response);
-                  this.props.history.push("/account");
-                }}
-              >
-                login
-              </BlueButton>
-            </div>
-          </div>
+          />
         )}
       </Mutation>
     );

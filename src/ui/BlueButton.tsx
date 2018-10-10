@@ -13,7 +13,7 @@ export const BlueButton = styled("button")`
   color: #440dff;
   border: 1px solid rgb(249, 200, 200);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px;
-  width: 100%;
+  width: 108.5%;
   margin-top: 6px;
   margin-bottom: 12px;
   cursor: pointer;
