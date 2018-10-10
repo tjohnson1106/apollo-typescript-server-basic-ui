@@ -6,6 +6,7 @@ import { LoginMutation, LoginMutationVariables } from "../../schemaTypes";
 import { RouteComponentProps } from "react-router-dom";
 import { meQuery } from "../../graphql/queries/me";
 import { userFragment } from "../../graphql/fragments/userFragment";
+import { RedButton } from "src/ui/BlueButton";
 
 // TODO implement types with apollo-cli
 
@@ -76,7 +77,7 @@ export class LoginView extends PureComponent<RouteComponentProps<{}>> {
               />
             </div>
             <div>
-              <button
+              <RedButton
                 onClick={async () => {
                   // optional reset store
                   client.resetStore();
@@ -88,7 +89,7 @@ export class LoginView extends PureComponent<RouteComponentProps<{}>> {
                 }}
               >
                 login
-              </button>
+              </RedButton>
             </div>
           </div>
         )}
