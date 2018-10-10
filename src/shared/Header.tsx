@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Query } from "react-apollo";
 import { MeQuery } from "../schemaTypes";
 import { meQuery } from "../graphql/queries/me";
+import { HeaderButton } from "../ui/HeaderButton";
 
 export class Header extends PureComponent {
   state = {};
@@ -13,21 +14,23 @@ export class Header extends PureComponent {
         style={{
           height: 50,
           width: "100%",
-          backgroundColor: "#fafafa",
+          backgroundColor: " #FFFEFC",
           display: "flex",
           justifyContent: "space-around",
+          alignItems: "center",
           padding: 10
         }}
       >
         <Link to="/">
-          <h2
+          <HeaderButton
             style={{
               fontStyle: "oblique",
-              fontWeight: "lighter"
+              fontWeight: "lighter",
+              fontSize: 24
             }}
           >
             Stripe Payments
-          </h2>
+          </HeaderButton>
         </Link>
         <Query<MeQuery> query={meQuery}>
           {({ data, loading }) => {
@@ -38,12 +41,12 @@ export class Header extends PureComponent {
             if (!data.me) {
               return (
                 <div>
-                  <div>
-                    <Link to="/login">Login</Link>
-                  </div>
-                  <div>
-                    <Link to="/register">Register</Link>
-                  </div>
+                  <Link to="/login">
+                    <HeaderButton>login</HeaderButton>
+                  </Link>
+                  <Link to="/register">
+                    <HeaderButton>register</HeaderButton>
+                  </Link>
                 </div>
               );
             }

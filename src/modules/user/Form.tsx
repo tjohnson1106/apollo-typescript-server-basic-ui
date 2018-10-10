@@ -2,7 +2,6 @@ import * as React from "react";
 import PureComponent = React.PureComponent;
 import { Input } from "../../ui/Input";
 import { BlueButton } from "../../ui/BlueButton";
-import { StringValueNode } from "graphql";
 
 interface State {
   email: string;

@@ -18,7 +18,7 @@ const loginMutation = gql`
   ${userFragment}
 `;
 
-export class LoginView extends React.PureComponent<RouteComponentProps<{}>> {
+export class LoginView extends PureComponent<RouteComponentProps<{}>> {
   render() {
     return (
       <Mutation<LoginMutation, LoginMutationVariables>
