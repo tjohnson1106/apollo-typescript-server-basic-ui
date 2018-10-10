@@ -6,9 +6,8 @@ import { LoginMutation, LoginMutationVariables } from "../../schemaTypes";
 import { RouteComponentProps } from "react-router-dom";
 import { meQuery } from "../../graphql/queries/me";
 import { userFragment } from "../../graphql/fragments/userFragment";
-import { RedButton } from "src/ui/BlueButton";
-
-// TODO implement types with apollo-cli
+import { BlueButton } from "../../ui/BlueButton";
+import { Input } from "../../ui/Input";
 
 const loginMutation = gql`
   mutation LoginMutation($email: String!, $password: String!) {
@@ -59,25 +58,27 @@ export class LoginView extends PureComponent<RouteComponentProps<{}>> {
             }}
           >
             <div>
-              <input
+              <Input
+                label="EMAIL"
                 type="text"
                 name="email"
-                placeholder="email"
+                placeholder="Enter your email address"
                 value={email}
                 onChange={this.handleChange}
               />
             </div>
             <div>
-              <input
+              <Input
+                label="PASSWORD"
                 type="password"
                 name="password"
-                placeholder="password"
+                placeholder="Enter your password"
                 value={password}
                 onChange={this.handleChange}
               />
             </div>
             <div>
-              <RedButton
+              <BlueButton
                 onClick={async () => {
                   // optional reset store
                   client.resetStore();
@@ -89,7 +90,7 @@ export class LoginView extends PureComponent<RouteComponentProps<{}>> {
                 }}
               >
                 login
-              </RedButton>
+              </BlueButton>
             </div>
           </div>
         )}

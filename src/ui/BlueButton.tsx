@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const RedButton = styled("button")`
+export const BlueButton = styled("button")`
   align-items: center;
   user-select: none;
   display: inline-flex;

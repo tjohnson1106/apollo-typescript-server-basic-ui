@@ -16,6 +16,9 @@ const GlobalStyle = createGlobalStyle`
 body {
   background-color: #FFFEFC
 }
+*:focus {
+  outline: 0;
+}
 `;
 
 ReactDOM.render(
