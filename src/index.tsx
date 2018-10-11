@@ -14,7 +14,7 @@ const client = new ApolloClient({
 
 const GlobalStyle = createGlobalStyle`
 body {
-  background-color: #FFFEFC
+  background-color: #a4b0be
 }
 *:focus {
   outline: 0;
