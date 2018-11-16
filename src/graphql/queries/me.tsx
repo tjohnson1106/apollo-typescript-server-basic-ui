@@ -1,12 +1,25 @@
 import { gql } from "apollo-boost";
-import { userFragment } from "../fragments/userFragment";
+// import { userFragment } from "../fragments/userFragment";
+
+// fragment removed for testing incompatibility with apollo
 
 export const meQuery = gql`
   query MeQuery {
     me {
-      ...UserInfo
+      id
+      email
+      type
+      ccLast4
     }
   }
-
-  ${userFragment}
 `;
+
+// export const meQuery = gql`
+//   query MeQuery {
+//     me {
+//       ...UserInfo
+//     }
+//   }
+
+//   ${userFragment}
+// `;
